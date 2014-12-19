@@ -13,5 +13,5 @@ else
   echo "Only OSX and Ubuntu supported at the moment, I'm afraid"
 fi
 
-sudo pip install colorbrewer graphviz
+sudo pip install colorbrewer graphviz nestly bioscons
 
