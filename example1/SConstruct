@@ -1,0 +1,22 @@
+# Strictly speaking, importing these is not necessary, as SCons imports them automatically. I like the
+# extra clarity though.
+from SCons.Script import Command
+
+# Assign our input filenames to some variables for convenience
+sequences = 'input/sequences.fasta'
+metadata = 'input/metadata.csv'
+
+# Our first step is to create the alignment file
+align = Command('output/alignment.fasta',  # The first arg is the name of the target (output) file
+        sequences,                         # The second is the source (input) for the command
+        'muscle -in $SOURCE -out $TARGET') # The final is the command to be executed. Note that $SOURCE
+                                           # and $TARGET are set to the source and target, respectively.
+
+# We now have <XXX> SCons.Node object that we can use as the source for other targets
+tree = Command('output/tree.tre', align, 'fasttree -nt $SOURCE > $TARGET')
+
+# Now let's build our final target, a colored tree
+colored_tree = Command('output/colored_tree.pdf',
+        [tree, metadata],
+        './bin/colored_tree.py -I -c location $SOURCES $TARGET')
+
