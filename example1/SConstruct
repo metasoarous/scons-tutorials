@@ -16,7 +16,7 @@ align = Command('output/alignment.fasta',  # The first arg is the name of the ta
 tree = Command('output/tree.tre', align, 'fasttree -nt $SOURCE > $TARGET')
 
 # Now let's build our final target, a colored tree
-colored_tree = Command('output/colored_tree.pdf',
+colored_tree = Command('output/colored_tree.svg',
         [tree, metadata],
         './bin/colored_tree.py -I -c location $SOURCES $TARGET')
 
