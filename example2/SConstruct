@@ -1,0 +1,34 @@
+from SCons.Script import Command
+from os import path
+
+
+sequences = 'input/sequences.fasta'
+metadata = 'input/metadata.csv'
+
+
+action_strings = dict(muscle='muscle -in $SOURCE -out $TARGET',
+        mafft='mafft $SOURCE > $TARGET',
+        clustal='clustalw -INFILE=$SOURCE -OUTFILE=$TARGET -OUTPUT=FASTA -TYPE=DNA')
+colored_trees = []
+
+
+# Branch on the various alignment methods
+for program in ['muscle', 'mafft', 'clustal']:
+    outdir = path.join('output', program)
+    # Get the correct action string
+    align_action = action_strings[program]
+    align = Command(path.join(outdir, 'alignment.fasta'),
+            sequences,
+            align_action)
+
+    tree = Command(path.join(outdir, 'tree.tre'), align, 'fasttree -nt $SOURCE > $TARGET')
+
+    colored_tree = Command(path.join(outdir, 'colored_tree.svg'),
+            [tree, metadata],
+            './bin/colored_tree.py -I -c patient $SOURCES $TARGET')
+    colored_trees.append(colored_tree)
+
+combined_trees = Command('output/combined_trees.svg',
+    colored_trees,
+    'svg_stack.py $SOURCES > $TARGET')
+
