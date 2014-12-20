@@ -8,10 +8,16 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   echo "You will need to enter your password to install things"
   sudo apt-get install scons python-biopython python-matplotlib python-pip \
     python-networkx muscle fasttree clustalw mafft graphviz 
-
 else
   echo "Only OSX and Ubuntu supported at the moment, I'm afraid"
 fi
+
+mkdir temp
+cd temp
+git clone https://github.com/astraw/svg_stack.git
+cd svg_stack
+sudo python setup.py install
+cd ../..
 
 sudo pip install colorbrewer graphviz nestly bioscons
 
