@@ -1,6 +1,4 @@
-# Strictly speaking, importing this is not necessary, as SCons does a number of imports automatically.
-# I like the extra clarity though. The Command function is the cornerstone of SCons for our general use case,
-# and is used to specify what inputs and commands needs to be run in order to produce a given output.
+# SCons actually does this import for you, but I like the added clarity.
 from SCons.Script import Command
 
 # Assign our input filenames to some variables for convenience
