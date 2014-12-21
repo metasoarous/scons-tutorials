@@ -1,6 +1,6 @@
 # SCons for data science & computational biology tutorials
 
-This repository contains code examples from the [SCons for data science and computational biology pipelines](www.metasoarous.com/scons-for-data-science-and-computational-biology-pipelines) post on [my blog](www.metasoarous.com).
+This repository contains code examples from the [SCons for data science and computational biology pipelines](http://www.metasoarous.com/scons-for-data-science-and-computational-biology-pipelines) post on [my blog](http://www.metasoarous.com).
 For a full explanation, please see the introductory post.
 
 In short though, SCons is a build tool (akin to make) which uses python to construct build scripts.
@@ -24,5 +24,9 @@ If you're paranoid, take a look at the script for yourself to make sure there is
 Once that's out of the way, you should be able to `cd` into an `example*` directory and run `scons` to build the given analysis.
 And that's it!
 The files produced by the analysis should be in the `output` directory of your `example` directory.
+
+## The data
+
+The [sequence data](https://github.com/metasoarous/scons-tutorials/blob/master/input/sequences.fasta) was obtained from a GenBank submission of Shiino et al., 2012.
 
 
