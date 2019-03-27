@@ -1,6 +1,6 @@
 # SCons for data science & computational biology tutorials
 
-This repository contains code examples from the [SCons for data science and computational biology pipelines](http://www.metasoarous.com/scons-for-data-science-and-computational-biology-pipelines) post on [my blog](http://www.metasoarous.com).
+This repository contains code examples from the [SCons for data science and computational biology pipelines](https://www.metasoarous.com/scons-for-data-science-and-compbio/) post on [my blog](http://www.metasoarous.com).
 For a full explanation, please see the introductory post.
 
 In short though, SCons is a build tool (akin to make) which uses python to construct build scripts.
